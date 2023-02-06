@@ -104,17 +104,17 @@
     </div>
     <script>
         console.log("Connected")
-        // let query = window.location.search.split("?")[1].split("&")[0].split("=")[1];
-        // let pageno = parseInt(window.location.search.split("?")[1].split("&")[1].split("=")[1])
-        // console.log(query , pageno)
+         let query = window.location.search.split("?")[1].split("&")[0].split("=")[1];
+         let pageno = parseInt(window.location.search.split("?")[1].split("&")[1].split("=")[1])
+         console.log(query , pageno)
 
 
-        const news = async() =>{
-            let a = await fetch("https://newsapi.org/v2/everything?q=bitcoin&apiKey=888e13faba9c45b1b676fb5ac44a55a9");
+        const news = async(query, pageno) =>{
+            let a = await fetch(`https://newsapi.org/v2/everything?q=${query}&apiKey=888e13faba9c45b1b676fb5ac44a55a9`);
             let r = await a.json();
             console.log(r)
         }
-        news()
+        news(query, pageno)
 
     </script>
     
