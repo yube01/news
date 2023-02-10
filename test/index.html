@@ -48,12 +48,39 @@
     const entertainmentBtn = document.getElementById("entertainment")
     const inputBox = document.getElementById("inputBox")
     
-
+    const apiKeys = "888e13faba9c45b1b676fb5ac44a55a9";
+    const sportsNews = ""
+    const technologyNews = ""
+    const weatherNews = ""
+    const genearlNews = ""
+    const searchNews = ""
+    //https://newsapi.org/v2/everything?q=Apple&from=2023-02-10&sortBy=popularity&apiKey=API_KEY
 
 
     generalBtn.addEventListener("click",()=>{
+        fetchGeneral();
+
 
     })
+
+    const fetchGeneral = async ()=> {
+        const response = await fetch(genearlNews+apiKeys)
+        newsData = []
+        if(response.status >=200 && response.status <300){
+            const myJson = await response.json();
+            newsData = myJson
+        }
+        else{
+
+        }
+        displayNews()
+    }
+
+
+    const fetchSearchNews = async ()=>{
+        const response = await fetch(searchNews+inputBox.value+"&apiKey="+apiKeys)
+    }
+
     sportsBtn.addEventListener("click",()=>{
 
     })
