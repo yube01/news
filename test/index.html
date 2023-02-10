@@ -10,7 +10,7 @@
     <div class="container">
         <div class="navbar">
             <ul>
-                <li> <a href="general" id="genearl" > General </a></li>
+                <li> <a href="" id="genearl" > General </a></li>
                 <li> <a href="technology" id="technology" > technology </a></li>
                 <li> <a href="sports" id="sports" > sports </a></li>
                 <li> <a href="business" id="business" > business </a></li>
@@ -52,7 +52,7 @@
     const sportsNews = ""
     const technologyNews = ""
     const weatherNews = ""
-    const genearlNews = ""
+    const genearlNews = "https://newsapi.org/v2/top-headlines?country=us&apiKey"
     const searchNews = ""
     //https://newsapi.org/v2/everything?q=Apple&from=2023-02-10&sortBy=popularity&apiKey=API_KEY
 
@@ -68,17 +68,23 @@
         newsData = []
         if(response.status >=200 && response.status <300){
             const myJson = await response.json();
-            newsData = myJson
+            newsData = myJson.articles
         }
         else{
+            console.log(response.status, response.statusText)
 
         }
         displayNews()
     }
 
 
+    displayNews = () =>{
+        
+    }
+
+
     const fetchSearchNews = async ()=>{
-        const response = await fetch(searchNews+inputBox.value+"&apiKey="+apiKeys)
+        const response = await fetch(searchNews+ encodeURIComponent(inputBox.value) +"&apiKey="+apiKeys)
     }
 
     sportsBtn.addEventListener("click",()=>{
